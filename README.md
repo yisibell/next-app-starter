@@ -1,6 +1,6 @@
 # next-app-starter
 
-A ssr app stater build by Next + koa + Typescript.
+A ssr app stater build by Next + react + koa + Typescript.
 
 # Setup
 
