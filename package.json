@@ -10,8 +10,15 @@
     "react",
     "ssr",
     "koa",
-    "nextjs"
+    "nextjs",
+    "redux",
+    "typescript"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yisibell/next-app-starter.git"
+  },
+  "homepage": "https://github.com/yisibell/next-app-starter",
   "scripts": {
     "dev": "node ./scripts/dev.js",
     "build": "node ./scripts/build.js",
@@ -49,5 +56,8 @@
     "prettier": "^2.7.1",
     "typescript": "4.7.4",
     "yargs": "^17.5.1"
+  },
+  "engines": {
+    "node": ">= 14.x"
   }
 }
