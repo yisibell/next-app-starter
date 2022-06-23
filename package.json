@@ -12,7 +12,9 @@
     "koa",
     "nextjs",
     "redux",
-    "typescript"
+    "typescript",
+    "sass",
+    "styled-jsx"
   ],
   "repository": {
     "type": "git",
@@ -54,6 +56,7 @@
     "http-proxy-middleware": "^2.0.6",
     "koa-connect": "^2.1.0",
     "prettier": "^2.7.1",
+    "sass": "^1.53.0",
     "typescript": "4.7.4",
     "yargs": "^17.5.1"
   },

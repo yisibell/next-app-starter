@@ -1,4 +1,4 @@
-import '~/styles/globals.css'
+import '~/styles/globals.scss'
 import LayoutDefault from '~/layouts/default'
 import type { AppProps } from 'next/app'
 import type { NextPage } from 'next'
