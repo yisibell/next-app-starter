@@ -1,6 +1,6 @@
 # next-app-starter
 
-A ssr app stater build by Koa + Next + React + Typescript + Emotion styled engine + Material UI.
+A ssr app starter build by Koa + Next + React + Typescript + Emotion styled engine + Material UI.
 
 # Setup
 

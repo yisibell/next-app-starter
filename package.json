@@ -1,6 +1,7 @@
 {
   "name": "next-app-starter",
   "version": "1.0.0",
+  "description": "A ssr app starter build by Koa + Next + React + Typescript + Emotion styled engine + Material UI.",
   "private": true,
   "author": {
     "name": "elenh",
@@ -16,7 +17,7 @@
     "sass",
     "styled-jsx",
     "Material UI",
-    "emotion"
+    "Emotion styled engine"
   ],
   "repository": {
     "type": "git",
