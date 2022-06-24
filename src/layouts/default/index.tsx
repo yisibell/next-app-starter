@@ -3,7 +3,6 @@ import type { ReactNode } from 'react'
 import AppBar from './AppBar'
 import MuiBox from '@mui/material/Box'
 import MuiContainer from '@mui/material/Container'
-import MuiStack from '@mui/material/Stack'
 import settings from '~/settings'
 
 type LayoutProps = {
@@ -21,9 +20,8 @@ const DefaultLayout = ({ children }: LayoutProps) => {
 
       <MuiBox>
         <AppBar></AppBar>
-
         <MuiContainer>
-          <MuiStack my={4}>{children}</MuiStack>
+          <MuiBox my={4}>{children}</MuiBox>
         </MuiContainer>
       </MuiBox>
     </>
