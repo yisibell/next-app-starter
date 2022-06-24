@@ -3,6 +3,8 @@ import LayoutDefault from '~/layouts/default'
 import type { AppProps } from 'next/app'
 import type { NextPage } from 'next'
 import type { ReactElement, ReactNode } from 'react'
+import { ThemeProvider } from '@mui/material/styles'
+import theme from '~/theme'
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -19,7 +21,11 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout =
     Component.getLayout || ((page) => <LayoutDefault>{page}</LayoutDefault>)
 
-  return getLayout(<Component {...pageProps} />)
+  return (
+    <ThemeProvider theme={theme}>
+      {getLayout(<Component {...pageProps} />)}
+    </ThemeProvider>
+  )
 }
 
 export default MyApp
