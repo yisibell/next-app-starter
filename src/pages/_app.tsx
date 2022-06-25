@@ -5,6 +5,8 @@ import type { NextPage } from 'next'
 import type { ReactElement, ReactNode } from 'react'
 import { ThemeProvider } from '@mui/material/styles'
 import theme from '~/theme'
+import { Provider as StoreProvider } from 'react-redux'
+import store from '~/store'
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -22,9 +24,11 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     Component.getLayout || ((page) => <LayoutDefault>{page}</LayoutDefault>)
 
   return (
-    <ThemeProvider theme={theme}>
-      {getLayout(<Component {...pageProps} />)}
-    </ThemeProvider>
+    <StoreProvider store={store}>
+      <ThemeProvider theme={theme}>
+        {getLayout(<Component {...pageProps} />)}
+      </ThemeProvider>
+    </StoreProvider>
   )
 }
 
