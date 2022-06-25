@@ -1,10 +1,16 @@
 module.exports = {
   NEXT_APP_ENV: 'development',
-  // 请求基地址
-  NUXT_APP_BASE_API: 'https://luban.ft.veryvoga.com/api',
 
-  proxy: false,
+  // 请求基地址
+  // NUXT_APP_BASE_API: 'http://16.163.143.182',
+
+  // 代理
+  NEXT_APP_BASE_API: '/api2',
+  proxy: {
+    target: 'http://16.163.143.182',
+    pathRewrite: { '^/api2': '' },
+  },
 
   // mock 请求基地址
-  NUXT_APP_MOCK_API: 'http://yapi.smaloo.com/mock/60/api',
+  NEXT_APP_MOCK_API: 'http://yapi.smaloo.com/mock/60/api',
 }
