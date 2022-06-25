@@ -1,12 +1,19 @@
-import type { NextPage } from 'next'
+import type { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next'
 import getConfig from 'next/config'
 import { useEffect } from 'react'
 import { $api } from '~/api'
 
 const { publicRuntimeConfig } = getConfig()
 
-const Home: NextPage = () => {
-  const handleLogin = async () => {
+type Posts = {
+  author: string
+  content: string
+}
+
+const Home: NextPage = ({
+  posts,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const testLoginApi = async () => {
     const res = await $api.user.login({
       username: 'ANLF',
       password: '123456',
@@ -17,8 +24,9 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     console.log('runtime config:', publicRuntimeConfig)
+    console.log('get static props', posts)
 
-    handleLogin()
+    testLoginApi()
   })
 
   return (
@@ -26,6 +34,18 @@ const Home: NextPage = () => {
       <div>ya hoo! this is home page!!!</div>
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps = async (ctx) => {
+  console.log(ctx)
+
+  const posts: Posts[] = []
+
+  return {
+    props: {
+      posts,
+    },
+  }
 }
 
 export default Home
