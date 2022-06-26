@@ -4,6 +4,7 @@ import type { ICreateRequestApi } from '~/types/apiRepository'
 import getConfig from 'next/config'
 import $layer from '~/plugins/layer'
 import isClient from '~/utils/isClient'
+import store from '~/store'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -28,8 +29,11 @@ const createAxiosInstance = () => {
   // 请求拦截
   axiosInstance.interceptors.request.use(
     (config) => {
-      // set token
-      axiosInstance.defaults.headers.common.Authorization = ''
+      // set JWT token
+      const state = store.getState()
+
+      axiosInstance.defaults.headers.common.Authorization =
+        state.site.accessToken || ''
 
       return config
     },

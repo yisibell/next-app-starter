@@ -6,7 +6,8 @@ import type { ReactElement, ReactNode } from 'react'
 import { ThemeProvider } from '@mui/material/styles'
 import theme from '~/theme'
 import { Provider as StoreProvider } from 'react-redux'
-import store from '~/store'
+import { PersistGate } from 'redux-persist/integration/react'
+import store, { persistor } from '~/store'
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -25,9 +26,11 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <StoreProvider store={store}>
-      <ThemeProvider theme={theme}>
-        {getLayout(<Component {...pageProps} />)}
-      </ThemeProvider>
+      <PersistGate persistor={persistor}>
+        <ThemeProvider theme={theme}>
+          {getLayout(<Component {...pageProps} />)}
+        </ThemeProvider>
+      </PersistGate>
     </StoreProvider>
   )
 }
