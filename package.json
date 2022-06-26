@@ -1,7 +1,7 @@
 {
   "name": "next-app-starter",
   "version": "1.0.0",
-  "description": "A ssr app starter build by Koa + Next + React + Typescript + Emotion styled engine + Material UI.",
+  "description": "A ssr app starter build by Koa + Next + React + Redux + Typescript + Emotion styled engine + Material UI.",
   "private": true,
   "author": {
     "name": "elenh",
@@ -14,7 +14,6 @@
     "koa",
     "nextjs",
     "redux",
-    "@reduxjs/toolkit",
     "react-redux",
     "typescript",
     "sass",
