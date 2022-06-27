@@ -33,6 +33,7 @@
     "dev": "node ./scripts/dev.js",
     "build": "node ./scripts/build.js",
     "build:ft": "node ./scripts/build.js --env=ft",
+    "build:ft:analyze": "node ./scripts/build.js --env=ft --analyze=1",
     "start": "node ./scripts/app.js",
     "start:ft": "node ./scripts/app.js --env=ft",
     "pm2:docker:start": "pm2-runtime start ecosystem.config.js",
@@ -60,6 +61,7 @@
     "sweetalert2": "^11.4.18"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^12.1.6",
     "@types/node": "^18.0.0",
     "@types/qs": "^6.9.7",
     "@types/react": "~18.0.14",

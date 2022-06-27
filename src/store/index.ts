@@ -16,7 +16,7 @@ import counterReducer from './features/counter/reducer'
 import siteReducer, { SiteState } from './features/site/reducer'
 
 const persistConfig = {
-  key: 'site',
+  key: 'nextjs',
   version: 1,
   storage,
 }
@@ -39,11 +39,11 @@ export function makeStore() {
 
 const store = makeStore()
 
-export const persistor = persistStore(store)
-
 export type AppState = ReturnType<typeof store.getState>
 
 export type AppDispatch = typeof store.dispatch
+
+export const persistor = persistStore(store)
 
 export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector
 

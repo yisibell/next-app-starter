@@ -2,10 +2,15 @@ const execa = require('execa')
 const consola = require('consola')
 const argv = require('yargs/yargs')(process.argv.slice(2)).parse()
 
-async function buildSrc(env) {
+async function buildSrc(env, { analyze } = {}) {
   consola.info(`start building app...`)
 
-  const cmdArr = ['cross-env', `NEXT_APP_ENV=${env}`, 'next build']
+  const cmdArr = [
+    'cross-env',
+    `NEXT_APP_ENV=${env}`,
+    `ANALYZE=${analyze}`,
+    'next build',
+  ]
 
   const cmdStr = cmdArr.join(' ')
 
@@ -18,9 +23,11 @@ async function buildSrc(env) {
 
 async function run() {
   try {
-    const { env = 'production' } = argv
+    const { env = 'production', analyze } = argv
 
-    await buildSrc(env)
+    consola.info('build with analyze?', analyze === '1' ? 'yes' : 'no')
+
+    await buildSrc(env, { analyze })
   } catch (err) {
     consola.error(err)
   }

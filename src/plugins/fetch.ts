@@ -1,12 +1,9 @@
 import qs from 'qs'
 import axios from 'axios'
 import type { ICreateRequestApi } from '~/types/apiRepository'
-import getConfig from 'next/config'
 import $layer from '~/plugins/layer'
 import isClient from '~/utils/isClient'
 import store from '~/store'
-
-const { publicRuntimeConfig } = getConfig()
 
 const assign = (obj: {}, def: {}) => {
   return Object.assign({}, obj, def)
@@ -18,9 +15,10 @@ const redirect = (path: string) => {
   }
 }
 
-const createAxiosInstance = () => {
-  const { NEXT_APP_BASE_API } = publicRuntimeConfig
+const NEXT_APP_BASE_API = process.env.NEXT_APP_BASE_API
+const NEXT_APP_MOCK_API = process.env.NEXT_APP_MOCK_API
 
+const createAxiosInstance = () => {
   const axiosInstance = axios.create({
     baseURL: NEXT_APP_BASE_API,
     timeout: 50000,
@@ -89,7 +87,6 @@ const createRequestApi: ICreateRequestApi =
   (axiosInstance) =>
   (option, extraOption = {}) => {
     const { dataType = 'json', mock = false, loading = false } = extraOption
-    const { NEXT_APP_MOCK_API } = publicRuntimeConfig
 
     // 是否 mock 数据模式
     if (mock && NEXT_APP_MOCK_API) {

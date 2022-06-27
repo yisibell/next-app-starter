@@ -18,7 +18,7 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
 
-function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   // 如果 page 级别的组件定义了 getLayout 则表示该页面有自定义 layout
   // 否则，使用默认 layout
 
