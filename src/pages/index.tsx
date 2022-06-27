@@ -2,6 +2,9 @@ import type { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next'
 import getConfig from 'next/config'
 import { useEffect } from 'react'
 import { $api } from '~/api'
+import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -10,9 +13,13 @@ type Posts = {
   content: string
 }
 
-const Home: NextPage = ({
-  posts,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Home: NextPage = (
+  props: InferGetStaticPropsType<typeof getStaticProps>
+) => {
+  const { posts } = props
+
+  const { t } = useTranslation('common')
+
   const testLoginApi = async () => {
     const res = await $api.user.login({
       username: 'ANLF',
@@ -23,6 +30,7 @@ const Home: NextPage = ({
   }
 
   useEffect(() => {
+    console.log('props', props)
     console.log('runtime config:', publicRuntimeConfig)
     console.log('get static props', posts)
 
@@ -31,19 +39,26 @@ const Home: NextPage = ({
 
   return (
     <>
-      <div>ya hoo! this is home page!!!</div>
+      <h1>{t('h1')}</h1>
+
+      <Link href="/second-page">
+        <button type="button">{t('to-second-page')}</button>
+      </Link>
     </>
   )
 }
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  console.log(ctx)
+  const { locale } = ctx
 
   const posts: Posts[] = []
+
+  const translations = await serverSideTranslations(locale || '', ['common'])
 
   return {
     props: {
       posts,
+      ...translations,
     },
   }
 }

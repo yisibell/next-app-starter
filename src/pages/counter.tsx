@@ -1,14 +1,14 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import {
   decrement,
   increment,
   resetCountAsync,
 } from '~/store/features/counter/reducer'
-import { AppState, useAppDispatch } from '~/store'
+import { useAppDispatch, useAppSelector } from '~/store'
+import type { NextPage } from 'next'
 
-export default function Counter() {
-  const count = useSelector<AppState, number>((state) => state.counter.value)
+const Counter: NextPage = () => {
+  const count = useAppSelector((state) => state.counter.value)
   const dispatch = useAppDispatch()
 
   const handleReset = async () => {
@@ -42,3 +42,5 @@ export default function Counter() {
     </div>
   )
 }
+
+export default Counter

@@ -8,6 +8,7 @@ import theme from '~/theme'
 import { Provider as StoreProvider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import store, { persistor } from '~/store'
+import { appWithTranslation } from 'next-i18next'
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -35,4 +36,4 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   )
 }
 
-export default MyApp
+export default appWithTranslation(MyApp)
