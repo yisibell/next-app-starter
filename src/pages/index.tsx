@@ -30,9 +30,9 @@ const Home: NextPage = (
   }
 
   useEffect(() => {
-    console.log('props', props)
-    console.log('runtime config:', publicRuntimeConfig)
-    console.log('get static props', posts)
+    console.log('props:', props)
+    console.log('public runtime config:', publicRuntimeConfig)
+    console.log('get static props:', posts)
 
     testLoginApi()
   })
